@@ -1,0 +1,31 @@
+version: '3.11'
+
+services:
+  football_app:
+    entrypoint: /entrypoints/football.sh
+    container_name: 0.0.0.0
+    build: .
+    platform: linux/arm64
+    ports:
+      - 5050:5050
+    depends_on:
+      postgres_app:
+        condition: service_healthy
+
+  postgres_app:
+    hostname: postgres_app
+    image: postgres:alpine
+    platform: linux/arm64
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgress" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data

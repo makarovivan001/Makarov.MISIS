@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.header-block {
+    width: 100vw;
+    height: 150px;
+    background-color: #111173;
+    display: flex;
+    justify-content: center;
+}
+
+.header-main-block {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.title-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.title {
+    color: #fff;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
+}
+
+.logo-block {
+    margin-right: 50px;
+    margin-top: 25px;
+}
+
+.section-top-block, .section-club-block {
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.top-block {
+    width: 350px;
+    height: 150px;
+    background-color: rgb(168, 201, 217);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+}
+
+.top-club-text {
+    justify-content: center;
+    margin-left: 3%;
+    margin-right: 3%;
+    font-size: 165%;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.club-block {
+    width: calc(400px + 200px);
+    height: fit-content;
+    max-height: 700px;
+    background-color: lightblue;
+    box-shadow: 0px 0px 10px #000;
+    border-radius: 15px;
+}
+
+.club-info {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+.club-info img {
+    max-width: 40px;
+    height: auto;
+
+}
+
+.club-info h6 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 20px;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.club-info h6:hover {
+    color: #0D0D88;
+    text-decoration: underline;
+}
+
+.club-info:hover img {
+    box-shadow: 0px 0px 10px #000;
+}
+
+.club-info:hover {
+   background-color: #88a8b4;
+}

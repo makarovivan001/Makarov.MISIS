@@ -1,0 +1,77 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>О футболе</title>
+
+    <link rel="stylesheet" href="{% static 'lending/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'lending/css/auth.css' %}">
+    <script src="{% static 'lending/js/request.js' %}"></script>
+    <script src="{% static 'lending/js/index.js' %}"></script>
+    <script src="{% static 'lending/js/auth.js' %}"></script>
+</head>
+<body>
+    {% csrf_token %}
+    <header class="header-block">
+        <div class="header-main-block">
+            <div class="logo-block">
+                <img src="{% static 'lending/images/prl-bear.png' %}" alt="" height="100" width="300">
+            </div>
+            
+            <div class="title-block">
+                <h1 class="title">РОССИЙСКАЯ ПРЕМЬЕР-ЛИГА</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="authorization-section">
+        {% if request.user.id %}
+            <div class="auth-btn">
+                <input type="button" value="Выйти" onclick="logout()">
+                <input type="button" value="Добавить игрока" onclick="show_add_player()">
+{#                <input type="button" value="Добавить тренера" onclick="show_add_coach()">#}
+            </div>
+        {% else %}
+            <div class="auth-btn">
+                <input type="button" value="Авторизоваться" onclick="authorization_show_window()">
+            </div>
+            <div class="authorization-window">
+                <input type="text" name="" id="login" placeholder="Логин">
+                <input type="password" name="" id="password" placeholder="Пароль">
+
+                <div class="auth-btn-block">
+                    <input type="button" value="Отмена" onclick="authorization_hide_window()">
+                    <input type="button" value="Войти" onclick="authorization()">
+                </div>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="section-top-block">
+        <div class="top-block">
+            <h3 class="top-club-text">10 ЛУЧШИХ КЛУБОВ РПЛ СЕЗОНА 2023/2024</h3>
+        </div>
+    </section>
+
+    <section class="section-club-block">
+        <div class="club-block"></div>
+    </section>
+
+    <section class="section-club"> 
+        {% include 'lending/club_info.html' %}
+    </section>
+
+    <section class="section-player"> 
+        {% include 'lending/player.html' %}
+    </section>
+
+    <section class="section-coach"> 
+        {% include 'lending/coach.html' %}
+    </section>
+</body>
+</html>
