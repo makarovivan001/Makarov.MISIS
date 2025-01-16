@@ -1,3 +1,5 @@
+from django.db.models import Value
+from django.db.models.functions import Concat
 from pydantic import ValidationError
 from rest_framework import status
 from rest_framework.response import Response
@@ -9,7 +11,7 @@ from domain.exceptions.validation import ValidationApiException
 from domain.schemas.lending.club import ClubShortRetrieveDTO
 from domain.schemas.lending.country import CountryRetrieveDTO
 from domain.schemas.lending.player import (PlayerRetrieveDTO, PlayerCreateDTO,
-                                           PlayerDeleteDTO, PlayerUpdateDTO)
+                                           PlayerDeleteDTO, PlayerUpdateDTO, PlayerBestRetrieveDTO)
 from lending.models import Player, Club, Country
 
 
@@ -91,6 +93,26 @@ class PlayerApiView(ViewSet):
 
         Player.objects.filter(id=player_delete_dto.id).delete()
         return Response({})
+
+    def get_best(self, request: Request) -> Response:
+        player_queryset =  Player.objects.all().annotate(
+            full_name=Concat('surname', Value(' '), 'name')
+        ).select_related('club')
+        best_minutes_played = player_queryset.order_by('-minutes_played').first()
+        best_goals = player_queryset.order_by('-goals').first()
+        best_assists = player_queryset.order_by('-assists').first()
+        best_yellow_card = player_queryset.order_by('-yellow_card').first()
+        best_red_card = player_queryset.order_by('-red_card').first()
+        best_rating = player_queryset.order_by('-rating').first()
+
+        return Response({
+            "best_minutes_played": PlayerBestRetrieveDTO.model_validate(best_minutes_played).model_dump(),
+            "best_goals": PlayerBestRetrieveDTO.model_validate(best_goals).model_dump(),
+            "best_assists": PlayerBestRetrieveDTO.model_validate(best_assists).model_dump(),
+            "best_yellow_card": PlayerBestRetrieveDTO.model_validate(best_yellow_card).model_dump(),
+            "best_red_card": PlayerBestRetrieveDTO.model_validate(best_red_card).model_dump(),
+            "best_rating": PlayerBestRetrieveDTO.model_validate(best_rating).model_dump(),
+        })
 
 
 class PlayerFormApiView(APIView):

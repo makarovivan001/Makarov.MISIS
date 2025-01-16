@@ -14,5 +14,8 @@ urlpatterns = [
     path('player/club/<int:club_id>/', PlayerApiView.as_view({
         'get': 'get_by_club_id'
     })),
+    path('player/best/', PlayerApiView.as_view({
+        'get': 'get_best'
+    })),
     path('player/form/', PlayerFormApiView.as_view()),
 ]

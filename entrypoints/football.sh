@@ -2,6 +2,7 @@
 
 cd /src
 
+python manage.py makemigrations
 python manage.py migrate
 python manage.py add_super_user
 python manage.py init_data_to_database

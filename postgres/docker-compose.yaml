@@ -1,0 +1,20 @@
+version: "3.11"
+services:
+  postgres_app:
+    hostname: postgres_app
+    image: postgres:16.5-alpine3.20
+    ports:
+      - 5745:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_OPTIONS: "-c max_connections=300 -c shared_buffers=256MB"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./dump:/dump

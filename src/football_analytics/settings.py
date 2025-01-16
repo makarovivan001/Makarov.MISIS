@@ -56,11 +56,11 @@ WSGI_APPLICATION = 'football_analytics.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'football',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'postgres_app',
-        'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': '5745',
     }
 }
 

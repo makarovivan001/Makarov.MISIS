@@ -64,6 +64,16 @@ class Player(models.Model):
         default=None,
         related_name='player'
     )
+    height = models.PositiveSmallIntegerField(default=0)
+    weight = models.PositiveSmallIntegerField(default=0)
+    full_games = models.PositiveSmallIntegerField(default=0)
+    games = models.PositiveSmallIntegerField(default=0)
+    minutes_played = models.PositiveSmallIntegerField(default=0)
+    goals = models.PositiveSmallIntegerField(default=0)
+    assists = models.PositiveSmallIntegerField(default=0)
+    yellow_card = models.PositiveSmallIntegerField(default=0)
+    red_card = models.PositiveSmallIntegerField(default=0)
+    rating = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
 
     def __str__(self):
         return f"{self.number} {self.surname} {self.name}"
