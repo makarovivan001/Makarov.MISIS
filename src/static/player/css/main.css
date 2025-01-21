@@ -23,3 +23,7 @@
 .player_photo_block img {
     width: 100%;
 }
+
+.player-img-block {
+    padding-bottom: 3px;
+}

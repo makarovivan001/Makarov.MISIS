@@ -15,8 +15,9 @@
 
 .main-club-block {
     width: 60vw;
-    height: 650px;
+    height: 700px;
     padding: 10px;
+    top: 75px;
     border-radius: 15px;
     box-shadow: 0px 0px 10px #000;
     background-color: #e0e9f7;
@@ -83,7 +84,8 @@
     align-items: flex-start;
     width: 20%;
     position: absolute;
-    top: -50px;
+    top: -30px;
+    padding-right: 10px;
 }
 
 .img-club-block {
@@ -97,28 +99,26 @@
 .club-img {
     max-width: 100%; 
     max-height: 24vh;
+    padding-bottom: 15px;
 }
 
 .club-desc {
     width: 78%;
-    margin-left: auto; 
-    margin-top: 1%;
-    font-size: 17px;
+    margin-left: auto;
+    padding-top: 10px;
+    font-size: 19px;
     font-family: 'Times New Roman', Times, serif;
-}
-
-.club-country {
-    margin-top: 2px;  
-    font-size: 20px; 
 }
 
 .club-title {
     font-size: 20px;
     text-align: center;
+    padding-bottom: 7px;
 }
 
 .club_coach-title {
     font-size: 18px;
+    font-weight: normal;
     margin-top: 1px; 
 }
 
