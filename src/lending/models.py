@@ -20,13 +20,13 @@ class Club(models.Model):
         Country,
         on_delete=models.DO_NOTHING,
         null=True,
-        default=None,
+        default=None, blank=True,
     )
     coach = models.OneToOneField(
         'Coach',
         on_delete=models.SET_NULL,
         null=True,
-        default=None
+        default=None, blank=True,
     )
 
     def __str__(self):

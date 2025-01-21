@@ -15,3 +15,8 @@ class ClubAdmin(admin.ModelAdmin):
 @admin.register(Coach)
 class CoachAdmin(admin.ModelAdmin):
     ...
+
+
+@admin.register(Country)
+class CoachAdmin(admin.ModelAdmin):
+    ...

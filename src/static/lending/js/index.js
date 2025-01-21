@@ -1,4 +1,8 @@
 window.onload = function() {
+   get_clubs();
+}
+
+function get_clubs() {
     request({
         url: '/api/v1/club/',
         func: showClubs,
@@ -6,16 +10,29 @@ window.onload = function() {
 }
 
 function showClubs(data) {
-    console.log(data);
-    let inner_text = '';
-    data.clubs.forEach((item) => {
-        inner_text += `<div class="club-info" data-id="${item.id}" onclick="get_club_info(this)">
-                            <h6>${item.name}</h6>
-                            <img src="${item.photo}" alt="">
+    let clubs = data.clubs;
+    let up_line = '';
+    let middle_line = '';
+    let down_line = '';
+    for (let i = 0; i<4; i++) {
+        up_line += `<div class="club-info" data-id="${clubs[i].id}" onclick="get_club_info(this)">
+                            <img src="${clubs[i].photo}" alt="">
                         </div>`;
-    });
+    }
+    for (let i = 4; i<8; i++) {
+        middle_line += `<div class="club-info" data-id="${clubs[i].id}" onclick="get_club_info(this)">
+                            <img src="${clubs[i].photo}" alt="">
+                        </div>`;
+    }
+    for (let i = 8; i<data.clubs.length; i++) {
+        down_line += `<div class="club-info" data-id="${clubs[i].id}" onclick="get_club_info(this)">
+                            <img src="${clubs[i].photo}" alt="">
+                        </div>`;
+    }
 
-    document.querySelector('.club-block').insertAdjacentHTML('beforeEnd', inner_text);
+    document.querySelector('.club-up-block').insertAdjacentHTML('beforeEnd', up_line);
+    document.querySelector('.club-middle-block').insertAdjacentHTML('beforeEnd', middle_line);
+    document.querySelector('.club-down-block').insertAdjacentHTML('beforeEnd', down_line);
 }
 
 function get_club_info(elem) {
@@ -33,7 +50,7 @@ function get_club_info(elem) {
                                 <div class="player-img-block" ondblclick="show_add_player(${player.id})">
                                     <img src="${player.photo}" alt="" class="player-img">
                                 </div>
-                                <h3 class="player-title">${player.surname} ${player.name} ${player.middle_name}</h3>
+                                <h3 class="player-title">${player.surname} ${player.name} ${player.middle_name ?? ''}</h3>
                                 <div class="player-info">
                                     <p class="player-number">Номер: ${player.number}</p>
                                     <p class="player-country">Страна: ${player.country_of_birth.name}</p>
@@ -53,7 +70,7 @@ function get_club_info(elem) {
         club_title.innerText = data.name;
         club_desc.innerText = data.description;
         club_country.innerText = data.country.name;
-        club_coach_title.innerText = `${data.coach.surname} ${data.coach.name} ${data.coach.middle_name}`;
+        club_coach_title.innerText = `Главный тренер: ${data.coach.surname} ${data.coach.name} ${data.coach.middle_name ?? ''}`;
         // club_coach_country.innerText = data.coach.country.name;
 
     });

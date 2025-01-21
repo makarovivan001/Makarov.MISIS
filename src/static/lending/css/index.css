@@ -46,6 +46,11 @@
     padding: 20px;
 }
 
+.section-club-block {
+    flex-direction: column;
+    align-items: center;
+}
+
 .top-block {
     width: 350px;
     height: 150px;
@@ -67,30 +72,37 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-.club-block {
-    width: calc(400px + 200px);
+.section-club-block > div {
+    position: relative;
+    min-height: 200px;
     height: fit-content;
-    max-height: 700px;
-    background-color: lightblue;
-    box-shadow: 0px 0px 10px #000;
-    border-radius: 15px;
+    width: 80%;
+    min-width: 880px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0px 20px 0px;
 }
+
+.
+
+
+
 
 .club-info {
     display: flex;
     align-items: center;
-    justify-content: start;
-    padding-left: 10px;
-    height: 50px;
-    width: 100%;
+    justify-content: center;
+    width: fit-content;
+    height: 100%;
     cursor: pointer;
+
 }
 
 
 .club-info img {
-    max-width: 40px;
-    height: auto;
-
+    height: 180px;
+    width: auto;
 }
 
 .club-info h6 {
@@ -101,15 +113,155 @@
 
 }
 
-.club-info h6:hover {
-    color: #0D0D88;
-    text-decoration: underline;
-}
 
 .club-info:hover img {
-    box-shadow: 0px 0px 10px #000;
+
 }
 
 .club-info:hover {
-   background-color: #88a8b4;
+
 }
+
+.toggle-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 6px;
+    border-radius: 40px;
+    width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.slider {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    height: calc(100% - 12px);
+    background: linear-gradient(135deg, #4a5eff 0%, #6574ff 100%);
+    border-radius: 35px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(74, 94, 255, 0.4);
+}
+
+.toggle-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 32px;
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 35px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.toggle-button svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggle-button.active {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-button:not(.active) {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.toggle-button:not(.active) svg {
+    opacity: 0.6;
+}
+
+.toggle-button.active svg {
+    transform: scale(1.1);
+}
+
+@media (hover: hover) {
+    .toggle-button:not(.active):hover {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .toggle-button:not(.active):hover svg {
+        opacity: 0.8;
+    }
+}
+
+.category_block {
+    padding: 20px;
+    height: fit-content;
+}
+
+.best-card-content {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    background-color: #FEFEFE;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    margin: 0px 10px;
+}
+
+.best-card-img {
+    height: 100%;
+    width: auto;
+}
+
+.best-card-img > img {
+    width: auto;
+    height: 100%;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.best-up-block {
+    align-items: start !important;
+    justify-content: normal !important;
+}
+
+.best-middle-block {
+    justify-content: end !important;
+}
+
+.best-down-block {
+    justify-content: normal !important;
+}
+
+.best-card-info {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    padding-top: 15px;
+}
+
+.best-info {
+
+}
+
+.best-card-category h1 {
+    color: #fff;
+    font-size: 30px;
+
+}
+
+.best-card-category {
+    margin-bottom: 10px;
+}
+
