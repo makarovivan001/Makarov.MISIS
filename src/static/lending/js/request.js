@@ -5,7 +5,6 @@ function request({url, func=null, data = {}, form_data = null, method = 'GET'}) 
         method: method,
         headers: {
             'X-CSRFToken': document.querySelector('input[name=csrfmiddlewaretoken]').value,
-
         }
     };
 

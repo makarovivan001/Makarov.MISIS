@@ -64,6 +64,7 @@ class PlayerDeleteDTO(BaseModel):
     id: int
 
 class PlayerBestRetrieveDTO(BaseModel):
+    id: int
     photo: str
     full_name: str
     number: int

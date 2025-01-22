@@ -1,7 +1,6 @@
 from django.urls import path
 from lending.views.player import PlayerApiView, PlayerFormApiView
 
-
 urlpatterns = [
     path('player/', PlayerApiView.as_view({
         'post': 'create',

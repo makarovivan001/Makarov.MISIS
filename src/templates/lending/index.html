@@ -28,7 +28,8 @@
 
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
+            overflow: hidden;
             top: 0px;
             left: 0px;
             width: 100%;
@@ -63,13 +64,12 @@
                 <!-- Меню -->
                 <nav id="menu" class="menu">
                     <ul>
-                        <li>
-                            {% if request.user.id %}
-                                <a href="javascript:" onclick="logout()">Выйти</a>
-                            {% else %}
-                                <a href="javascript:" onclick="authorization_show_window()">Войти</a>
-                            {% endif %}
-                        </li>
+                        {% if request.user.id %}
+                            <li><a href="javascript:" onclick="logout()">Выйти</a></li>
+                            <li><a href="/admin/">Админ панель</a></li>
+                        {% else %}
+                            <li><a href="javascript:" onclick="authorization_show_window()">Войти</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>

@@ -47,11 +47,11 @@ function get_club_info(elem) {
         let inner_html = '';
         data.player.forEach(player => {
             inner_html += `<div class="player-card">
-                                <div class="player-img-block" ondblclick="show_add_player(${player.id})">
+                                <div class="player-img-block" onclick="show_player_card(${player.id})">
                                     <img src="${player.photo}" alt="" class="player-img">
                                 </div>
                                 <h3 class="player-title">${player.surname} ${player.name} ${player.middle_name ?? ''}</h3>
-                                <div class="player-info">
+                                <div>
                                     <p class="player-number">Номер: ${player.number}</p>
                                     <p class="player-country">Страна: ${player.country_of_birth.name}</p>
                                 </div>
@@ -63,7 +63,6 @@ function get_club_info(elem) {
         let club_title = document.querySelector('.club-title');
         let club_desc = document.querySelector('.club-desc');
         let club_coach_title = document.querySelector('.club_coach-title');
-
         club_img.src = data.photo;
         club_title.innerText = data.name;
         club_desc.innerText = data.description;
@@ -80,7 +79,4 @@ function close_club_info() {
     player_list_block.innerHTML = ''
 }
 
-/**
- * 
- */
 

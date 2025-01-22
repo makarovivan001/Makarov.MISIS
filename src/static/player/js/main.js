@@ -3,7 +3,7 @@ function show_add_player(id=null) {
 
     get_player_form();
     if (id) {
-        get_player_by_id(id);
+        fill_player_form_fields(id);
         document.getElementById('player_save_btn').dataset.id = id;
     }
 }
@@ -85,7 +85,7 @@ function get_player_form() {
     });
 }
 
-function get_player_by_id(id) {
+function fill_player_form_fields(id) {
     request({
         url: `/api/v1/player/${id}/`,
     }).then(data => {
@@ -118,4 +118,48 @@ function player_save(elem) {
     } else {
         add_player();
     }
+}
+
+function hide_player_card() {
+    document.querySelector('.player-card-window').style.display = "none";
+}
+
+function show_player_card(id) {
+    request({
+        url: `/api/v1/player/${id}/`,
+    }).then(data => {
+        document.querySelector('.player-card-window').style.display = "flex";
+        document.querySelector('.player-name').innerText = `${data.surname} ${data.name}`;
+        document.querySelector('.player-club').innerText = data.club.name;
+        document.querySelector('.player-photo>img').src = data.photo;
+        document.querySelector('.player-details').innerHTML = '';
+        document.querySelector('.player-details').insertAdjacentHTML(
+            'beforeEnd',
+            `<li><strong>Страна рождения:</strong> ${data.country_of_birth.name}</li>
+            <li><strong>Рост/Вес:</strong></li>
+            <li style="display: flex; width: 100%">
+                <span style="margin-right: 7px"><strong>${data.height} </strong>Рост</span>
+                <span><strong>${data.weight}</strong>Вес</span>
+            </li>
+            <li><strong>Рост:</strong> ${data.height}</li>
+            <li><strong>Вес:</strong> ${data.weight}</li>
+            <li><strong>Игровой номер:</strong> ${data.number}</li>
+            <li><strong>Страна рождения:</strong> ${data.country_of_birth.name}</li>
+            <li><strong>Статистика в первой части сезона:</strong></li>
+            <li><strong>Матчи:</strong> ${data.games}</li>
+            <li><strong>Полные матчи:</strong> ${data.full_games}</li>
+
+            <li style="display: flex; width: 100%">
+                <span style="margin-right: 7px"><strong>${data.minutes_played}</strong>Сыгранных минут</span>
+                <span style="margin-right: 7px"><strong>${data.goals}</strong>Голы</span>
+                <span><strong>${data.assists}</strong>Ассисты</span>
+            </li>
+            <li><strong>Жёлтые карточки:</strong> ${data.yellow_card}</li>
+            <li><strong>Красные карточки:</strong> ${data.red_card}</li>
+            <li><strong>Рейтинг:</strong> ${data.rating}</li>`
+
+        );
+
+        console.log(data);
+    })
 }

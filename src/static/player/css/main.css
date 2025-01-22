@@ -1,5 +1,5 @@
-.add-player-window {
-    position: absolute;
+.player-card-window {
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -10,10 +10,18 @@
     display: none;
     justify-content: space-between;
     flex-direction: column;
-    width: 320px;
+    width: fit-content;
     height: fit-content;
 
     padding: 20px;
+
+    z-index: 20;
+}
+
+.player-card-block {
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px;
 }
 
 .player_photo_block {
@@ -24,6 +32,72 @@
     width: 100%;
 }
 
-.player-img-block {
-    padding-bottom: 3px;
+.player-info {
+    padding: 20px;
+    flex: 1;
+}
+
+.player-name {
+    margin-top: 0;
+    font-size: 2.5em;
+    color: #333;
+    word-break: break-word;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 350px;
+}
+
+.player-club {
+    font-size: 2em;
+    color: #666;
+    margin-bottom: 6px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.player-details {
+    list-style-type: none;
+    padding: 0;
+}
+
+.player-details li {
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.player-details li strong {
+    font-weight: bold;
+    color: #0e0e40;
+}
+
+.player-description {
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+.close-window-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.close-window-btn:hover {
+    background-color: #218838;
+}
+
+.player-photo {
+    width: 300px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.player-photo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
